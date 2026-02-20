@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-brand">
+      <h1>💰 Expense Tracker</h1>
+      <p class="tagline">Small, simple, and private</p>
+    </div>
+    <nav class="site-nav">
+      <button id="export-csv" class="nav-btn">Export CSV</button>
+      <button id="clear-all" class="nav-btn danger">Clear All</button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    <aside class="panel panel-left">
+      <div class="panel-card">
+        <div class="balance">
+          <h2>Total Balance</h2>
+          <h3 id="total">R0.00</h3>
+        </div>
+
+        <form id="expense-form" class="expense-form">
+          <input type="text" id="title" placeholder="Expense name" required>
+          <input type="number" id="amount" placeholder="Amount" required step="0.01">
+          <select id="category" required>
+            <option value="Uncategorized">Uncategorized</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Other">Other</option>
+          </select>
+          <input type="date" id="date" required>
+          <button type="submit">Add Expense</button>
+        </form>
+
+        <ul id="expense-list" class="expense-list"></ul>
+      </div>
+    </aside>
+
+    <section class="panel panel-right">
+      <div class="panel-card">
+        <div class="filters">
+          <label>From <input type="date" id="filter-start"></label>
+          <label>To <input type="date" id="filter-end"></label>
+          <button id="apply-filter" type="button">Apply</button>
+          <button id="clear-filter" type="button">Clear</button>
+        </div>
+
+        <div class="charts">
+          <h2>Spending by Category</h2>
+          <canvas id="chart-category" width="400" height="200"></canvas>
+
+          <h2>Spending over Time</h2>
+          <canvas id="chart-time" width="600" height="240"></canvas>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Built with ❤️ — data stays in your browser (localStorage)</small>
+  </footer>
+
+</body>
+<!-- Chart.js from CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</html>
+</body>
+</html>

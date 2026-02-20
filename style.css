@@ -1,0 +1,88 @@
+/* Website-style Expense Tracker styles */
+:root{
+  --bg: #eef9f8;
+  --card: #ffffff;
+  --muted: #546070;
+  --accent: #06b6d4; /* teal */
+  --accent-2: #3b82f6; /* blue */
+  --danger: #ef4444;
+  --shadow: rgba(16,24,40,0.06);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0;
+  padding: 0;
+  color: #0f172a;
+  -webkit-font-smoothing:antialiased;
+  /* subtle tiled background */
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(45deg, rgba(255,255,255,0.35) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.35) 75%, rgba(255,255,255,0.35)),
+    linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0.02));
+  background-size: 36px 36px, 36px 36px;
+  background-position: 0 0, 18px 18px;
+}
+
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
+.site-brand h1{margin:0;font-size:1.2rem}
+.site-brand .tagline{margin:2px 0 0;font-size:0.85rem;opacity:0.95}
+.site-nav{display:flex;gap:8px}
+.nav-btn{background:rgba(255,255,255,0.12);border:0;padding:8px 10px;border-radius:8px;color:#fff;cursor:pointer}
+.nav-btn.danger{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12)}
+
+.site-main{max-width:1100px;margin:22px auto;padding:0 18px;display:grid;grid-template-columns:1fr 420px;gap:18px}
+.panel{min-height:200px}
+.panel-card{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 6px 18px var(--shadow)}
+
+.panel-left .balance{margin-bottom:12px}
+
+.expense-form{display:flex;flex-direction:column;gap:10px}
+.expense-form input[type="text"],
+.expense-form input[type="number"],
+.expense-form select, .expense-form input[type="date"]{
+  width:100%;padding:10px 12px;border-radius:10px;border:1px solid #eef2f6;background:#fff;font-size:0.95rem
+}
+.expense-form button{padding:10px 12px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}
+
+.expense-list{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.expense-list li{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:8px;background:linear-gradient(180deg,#ffffff,#fbfeff);border:1px solid #eef2f6}
+.expense-list .meta{display:flex;flex-direction:column}
+.expense-list .meta .title{font-weight:600}
+.expense-list .meta .amt{color:var(--muted);font-size:0.9rem}
+.actions{display:flex;gap:8px;align-items:center}
+.btn-delete{background:transparent;border:0;color:var(--danger);cursor:pointer;padding:6px}
+
+.charts{margin-top:14px}
+.charts h2{font-size:1rem;margin:12px 0 8px}
+canvas{width:100% !important;height:auto !important;max-height:360px}
+
+select#category, input#date{padding:10px 12px;border-radius:8px;border:1px solid #e6e9ee;background:#fff;font-size:0.95rem}
+
+.filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.filters label{display:flex;flex-direction:column;font-size:0.85rem;color:var(--muted)}
+.filters button{padding:8px 10px;border-radius:8px;border:0;background:var(--accent-2);color:#fff;cursor:pointer}
+.filters button#clear-filter{background:var(--danger)}
+
+/* responsive: collapse to single column on smaller screens */
+@media (max-width:900px){
+  .site-main{grid-template-columns:1fr;padding:0 12px}
+  .panel-right{order:2}
+  .panel-left{order:1}
+  .panel-card{padding:12px}
+}
+
+@media (max-width:640px){
+  .expense-form input[type="text"],
+  .expense-form input[type="number"],
+  .expense-form select, .expense-form input[type="date"],
+  .expense-form button{width:100%}
+  .filters{flex-direction:column;align-items:stretch}
+  .filters label{width:100%}
+}
+
+/* utility */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
