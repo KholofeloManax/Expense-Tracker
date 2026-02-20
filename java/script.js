@@ -1,4 +1,4 @@
-// Interactive script for Expense Tracker
+// Interactive script for Expense Tracker (moved to java/script.js)
 // Features: add expense, render list, persist to localStorage, remove expense, date filtering, charts
 (function(){
 	const STORAGE_KEY = 'expenses_v1';
